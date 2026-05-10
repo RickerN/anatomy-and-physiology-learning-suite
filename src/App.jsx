@@ -91,14 +91,24 @@ async function apiCall(prompt, maxTokens=200) {
 
 async function logToSupabase(data) {
   try {
-    await fetch(`${SUPABASE_URL}/rest/v1/interactions`,{
-      method:"POST",
-      headers:{
-        "Content-Type":"application/json",
-        "apikey":SUPABASE_ANON_KEY,
-        "Authorization":`Bearer ${SUPABASE_ANON_KEY}`,
-        "Prefer":"return=minimal"
-      },
+    await fetch("/api/log", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        student_id: data.student_id || "unknown",
+        session_id: data.session_id || "unknown",
+        system: data.system || null,
+        level: data.level || null,
+        concept: data.concept || null,
+        question: data.question || null,
+        correct: data.correct ?? false,
+        status: data.status || null,
+        hint_requested: data.hint_requested ?? false,
+        attempts: data.attempts || 0
+      })
+    });
+  } catch(e) { console.error("Log error:", e); }
+},
       body:JSON.stringify({
         student_id:data.student_id||"unknown",
         session_id:data.session_id||"unknown",
