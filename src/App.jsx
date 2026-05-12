@@ -1,5 +1,5 @@
 import { useState } from "react";
-
+// v2
 const SUPABASE_URL = "https://occqjipaelbalqrfpffq.supabase.co";
 const SUPABASE_ANON_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9jY3FqaXBhZWxiYWxxcmZwZmZxIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzgwMTA3MTIsImV4cCI6MjA5MzU4NjcxMn0.VH6ule4CwUhA36vb0EXoInhM9sv14q574tW-5R8stv8";
 
