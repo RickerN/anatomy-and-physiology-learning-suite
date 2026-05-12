@@ -108,7 +108,7 @@ async function logToSupabase(data) {
       })
     });
   } catch(e) { console.error("Log error:", e); }
-},
+}
       body:JSON.stringify({
         student_id:data.student_id||"unknown",
         session_id:data.session_id||"unknown",
