@@ -109,21 +109,7 @@ async function logToSupabase(data) {
     });
   } catch(e) { console.error("Log error:", e); }
 }
-      body:JSON.stringify({
-        student_id:data.student_id||"unknown",
-        session_id:data.session_id||"unknown",
-        system:data.system||null,
-        level:data.level||null,
-        concept:data.concept||null,
-        question:data.question||null,
-        correct:data.correct??false,
-        status:data.status||null,
-        hint_requested:data.hint_requested??false,
-        attempts:data.attempts||0
-      })
-    });
-  } catch(e){ console.error("Supabase error:",e); }
-}
+    
 
 function getStudentId() {
   try {
