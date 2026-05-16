@@ -52,12 +52,6 @@ This is a working intervention, not a concept. Every design decision was driven 
 
 ---
 
-## Try it
-
-**Live app:** [anatomy-and-physiology-learning-sui-blue.vercel.app](https://anatomy-and-physiology-learning-sui-blue.vercel.app)
-
----
-
 ## About
 
 Built by a community college professor with 13 years in higher education, currently serving as a Presidential Strategic Planning Fellow across a 12-campus system and completing a PhD in Community College Leadership.
@@ -66,4 +60,4 @@ The research question driving this work: does structured adaptive AI engagement 
 
 ---
 
-*Iterava Learning — iteravalearning.com*
+*Iterava Learning*
