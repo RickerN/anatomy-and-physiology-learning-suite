@@ -141,7 +141,42 @@ function getSessionId() {
     return id;
   } catch(e){ return "sess_unknown"; }
 }
+const FONT_SIZES = [
+  { label:"Small", base:14 },
+  { label:"Normal", base:16 },
+  { label:"Large", base:19 },
+  { label:"Extra Large", base:22 },
+];
 
+function FontSizeControl({ sizeIdx, setSizeIdx }) {
+  function decrease() {
+    const next = Math.max(0, sizeIdx - 1);
+    setSizeIdx(next);
+    try { localStorage.setItem("iterava_font_size", next); } catch(e) {}
+  }
+  function increase() {
+    const next = Math.min(FONT_SIZES.length - 1, sizeIdx + 1);
+    setSizeIdx(next);
+    try { localStorage.setItem("iterava_font_size", next); } catch(e) {}
+  }
+  const base = FONT_SIZES[sizeIdx].base;
+  return (
+    <div style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:8,padding:"8px 16px",borderBottom:"0.5px solid var(--color-border-tertiary)",fontSize:14}}>
+      <span style={{color:"var(--color-text-secondary)"}}>Text size:</span>
+      <button onClick={decrease} disabled={sizeIdx===0} aria-label="Decrease text size"
+        style={{width:36,height:36,borderRadius:8,fontSize:base-2,fontWeight:500,cursor:sizeIdx===0?"default":"pointer"}}>
+        A-
+      </button>
+      <span style={{minWidth:80,textAlign:"center",color:"var(--color-text-primary)",fontSize:base}}>
+        {FONT_SIZES[sizeIdx].label}
+      </span>
+      <button onClick={increase} disabled={sizeIdx===FONT_SIZES.length-1} aria-label="Increase text size"
+        style={{width:36,height:36,borderRadius:8,fontSize:base+2,fontWeight:500,cursor:sizeIdx===FONT_SIZES.length-1?"default":"pointer"}}>
+        A+
+      </button>
+    </div>
+  );
+}
 function Spinner({msg}) {
   return (
     <div style={{display:"flex",alignItems:"center",gap:10,color:"var(--color-text-secondary)",fontSize:14,padding:"1rem 0"}}>
