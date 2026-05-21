@@ -870,12 +870,14 @@ export default function App() {
   const hist=system?getHistory(system,levelId):[];
   const correct=hist.filter(h=>h.correct===true).length;
   const wrong=hist.filter(h=>h.correct===false).length;
-
-  if(!system){
+if(!system){
     return (
-      <div style={{padding:"2rem 1rem"}}>
+      <div>
         <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+        <FontSizeControl sizeIdx={fontSizeIdx} setSizeIdx={setFontSizeIdx}/>
+        <div style={{padding:"2rem 1rem"}}>
         <h2 style={{fontSize:18,fontWeight:500,marginBottom:4}}>Physiology Learning Suite</h2>
+ 
         <p style={{color:"var(--color-text-secondary)",marginBottom:24,fontSize:14}}>Adaptive questions across all 6 levels of Bloom's Taxonomy. Select a body system to begin.</p>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:10}}>
           {SYSTEMS.map(s=><button key={s} onClick={()=>selectSystem(s)} style={{padding:"1rem",borderRadius:10,textAlign:"center",fontWeight:500,fontSize:14,minHeight:64,cursor:"pointer"}}>{s}</button>)}
