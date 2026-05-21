@@ -69,7 +69,7 @@ ADAPTIVE INSTRUCTIONS:
 - Performing well → increase complexity
 - Never repeat a question
 - Keep key points scoped to what the question asks
-IMPORTANT: Randomize which option is correct — do not always make A or B the correct answer. Distribute correct answers across A, B, C, and D equally.
+IMPORTANT: Randomize which option is correct — do not always make A or B the correct answer. Think of the correct answer first, then place it unpredictably across A, B, C, and D, always making sure the correct answer is not the same letter as the previous question. Vary the position unpredictably.
 
 Generate ONE question. Return ONLY valid JSON:
 For explain: {"type":"explain","concept":"name","question":"question","keyPoints":["point 1","point 2","point 3"],"reachingQuestion":"simpler follow-up","advancingQuestion":"harder follow-up"}
