@@ -882,6 +882,7 @@ if(!system){
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:10}}>
           {SYSTEMS.map(s=><button key={s} onClick={()=>selectSystem(s)} style={{padding:"1rem",borderRadius:10,textAlign:"center",fontWeight:500,fontSize:14,minHeight:64,cursor:"pointer"}}>{s}</button>)}
         </div>
+        </div>
       </div>
     );
   }
