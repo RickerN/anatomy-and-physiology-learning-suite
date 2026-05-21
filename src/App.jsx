@@ -69,10 +69,16 @@ ADAPTIVE INSTRUCTIONS:
 - Performing well → increase complexity
 - Never repeat a question
 - Keep key points scoped to what the question asks
+IMPORTANT: Randomize which option is correct — do not always make A or B the correct answer. Distribute correct answers across A, B, C, and D equally.
 
 Generate ONE question. Return ONLY valid JSON:
 For explain: {"type":"explain","concept":"name","question":"question","keyPoints":["point 1","point 2","point 3"],"reachingQuestion":"simpler follow-up","advancingQuestion":"harder follow-up"}
-For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"A","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
+For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"B","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
+For case: {"type":"case","concept":"name","presentation":"scenario","task":"task","keyMechanisms":["m1","m2","m3"],"clinicalRationale":"reasoning","reachingQuestion":"simpler","advancingQuestion":"harder"}`;
+}
+Generate ONE question. Return ONLY valid JSON:
+For explain: {"type":"explain","concept":"name","question":"question","keyPoints":["point 1","point 2","point 3"],"reachingQuestion":"simpler follow-up","advancingQuestion":"harder follow-up"}
+For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"B","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
 For case: {"type":"case","concept":"name","presentation":"scenario","task":"task","keyMechanisms":["m1","m2","m3"],"clinicalRationale":"reasoning","reachingQuestion":"simpler","advancingQuestion":"harder"}`;
 }
 
