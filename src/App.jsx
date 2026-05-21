@@ -779,7 +779,9 @@ export default function App() {
   const [fontSizeIdx, setFontSizeIdx] = useState(() => {
   try {
     const saved = localStorage.getItem("iterava_font_size");
-    return saved !== null ? parseInt(saved) : 1;
+    const idx = saved !== null ? parseInt(saved) : 1;
+    document.body.style.fontSize = FONT_SIZES[idx].base + "px";
+    return idx;
   } catch(e) { return 1; }
 });
   const [levelId,setLevelId]=useState("remember");
