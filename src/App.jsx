@@ -153,8 +153,17 @@ function FontSizeControl({ sizeIdx, setSizeIdx }) {
     document.body.style.fontSize = FONT_SIZES[idx].base + "px";
     try { localStorage.setItem("iterava_font_size", idx); } catch(e) {}
   }
+function applySize(idx) {
+    document.body.style.fontSize = FONT_SIZES[idx].base + "px";
+    try { localStorage.setItem("iterava_font_size", idx); } catch(e) {}
+  }
   function decrease() {
     const next = Math.max(0, sizeIdx - 1);
+    setSizeIdx(next);
+    applySize(next);
+  }
+  function increase() {
+    const next = Math.min(FONT_SIZES.length - 1, sizeIdx + 1);
     setSizeIdx(next);
     applySize(next);
   }
