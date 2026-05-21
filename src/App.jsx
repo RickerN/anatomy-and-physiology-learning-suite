@@ -69,12 +69,28 @@ ADAPTIVE INSTRUCTIONS:
 - Performing well → increase complexity
 - Never repeat a question
 - Keep key points scoped to what the question asks
-IMPORTANT: Randomize which option is correct — do not always make A or B the correct answer. Think of the correct answer first, then place it unpredictably across A, B, C, and D, always making sure the correct answer is not the same letter as the previous question. Vary the position unpredictably.
-
-Generate ONE question. Return ONLY valid JSON:
+Generate ONE question. Return ONLY valid JSON (no markdown, no backticks):
 For explain: {"type":"explain","concept":"name","question":"question","keyPoints":["point 1","point 2","point 3"],"reachingQuestion":"simpler follow-up","advancingQuestion":"harder follow-up"}
 For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"B","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
 For case: {"type":"case","concept":"name","presentation":"scenario","task":"task","keyMechanisms":["m1","m2","m3"],"clinicalRationale":"reasoning","reachingQuestion":"simpler","advancingQuestion":"harder"}`;
+}
+
+function shuffleMCQ(q) {
+  if (q.type !== "mcq" || !q.options || !q.correct) return q;
+  const correctLetter = q.correct.trim().toUpperCase();
+  const correctOption = q.options.find(o => o.trim().toUpperCase().startsWith(correctLetter));
+  if (!correctOption) return q;
+  const correctText = correctOption.substring(2).trim();
+  const allTexts = q.options.map(o => o.substring(2).trim());
+  for (let i = allTexts.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [allTexts[i], allTexts[j]] = [allTexts[j], allTexts[i]];
+  }
+  const letters = ["A", "B", "C", "D"];
+  const newOptions = allTexts.map((text, idx) => letters[idx] + ". " + text);
+  const newCorrectIndex = allTexts.indexOf(correctText);
+  const newCorrect = letters[newCorrectIndex];
+  return { ...q, options: newOptions, correct: newCorrect };
 }
 
 async function apiCall(prompt, maxTokens=200) {
