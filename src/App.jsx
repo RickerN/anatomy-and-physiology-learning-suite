@@ -772,6 +772,12 @@ const STARTER_QUESTIONS = {
 export default function App() {
   const [system,setSystem]=useState(null);
   const [tab,setTab]=useState("practice");
+  const [fontSizeIdx, setFontSizeIdx] = useState(() => {
+  try {
+    const saved = localStorage.getItem("iterava_font_size");
+    return saved !== null ? parseInt(saved) : 1;
+  } catch(e) { return 1; }
+});
   const [levelId,setLevelId]=useState("remember");
   const [histories,setHistories]=useState({});
   const [currentQ,setCurrentQ]=useState(null);
