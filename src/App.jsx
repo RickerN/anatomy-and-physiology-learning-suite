@@ -174,7 +174,7 @@ function applySize(idx) {
   }
   const base = FONT_SIZES[sizeIdx].base;
   return (
-    <div style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:8,padding:"8px 16px",borderBottom:"0.5px solid var(--color-border-tertiary)",fontSize:14}}>
+    <div style={{display:"flex",alignItems:"center",justifyContent:"flex-end",gap:8,padding:"8px 16px",borderBottom:"0.5px solid var(--color-border-tertiary)",fontSize:"0.875em"}}>
       <span style={{color:"var(--color-text-secondary)"}}>Text size:</span>
       <button onClick={decrease} disabled={sizeIdx===0} aria-label="Decrease text size"
         style={{width:36,height:36,borderRadius:8,fontSize:base-2,fontWeight:500,cursor:sizeIdx===0?"default":"pointer"}}>
@@ -192,7 +192,7 @@ function applySize(idx) {
 }
 function Spinner({msg}) {
   return (
-    <div style={{display:"flex",alignItems:"center",gap:10,color:"var(--color-text-secondary)",fontSize:14,padding:"1rem 0"}}>
+    <div style={{display:"flex",alignItems:"center",gap:10,color:"var(--color-text-secondary)",fontSize:"0.875em",padding:"1rem 0"}}>
       <div style={{width:16,height:16,border:"2px solid var(--color-border-secondary)",borderTopColor:"var(--color-text-primary)",borderRadius:"50%",animation:"spin 0.8s linear infinite",flexShrink:0}}/>
       {msg||"Loading..."}
     </div>
@@ -201,7 +201,7 @@ function Spinner({msg}) {
 
 function RetryError({onRetry,msg}) {
   return (
-    <div style={{padding:"12px 16px",borderRadius:8,background:"var(--color-background-danger)",fontSize:14,lineHeight:1.6,marginBottom:12}}>
+    <div style={{padding:"12px 16px",borderRadius:8,background:"var(--color-background-danger)",fontSize:"0.875em",lineHeight:1.6,marginBottom:12}}>
       <p style={{marginBottom:8}}>{msg||"Something went wrong — your answer was not evaluated. Nothing has been revealed."}</p>
       <button onClick={onRetry}>Try again</button>
     </div>
@@ -215,7 +215,7 @@ function ProgressDots({history}) {
       {history.slice(0,20).map((h,i)=>(
         <div key={i} style={{width:10,height:10,borderRadius:"50%",background:colors[h.status]||"var(--color-border-secondary)"}}/>
       ))}
-      {history.length>20&&<span style={{fontSize:12,color:"var(--color-text-secondary)"}}>+{history.length-20} more</span>}
+      {history.length>20&&<span style={{fontSize:"0.75em",color:"var(--color-text-secondary)"}}>+{history.length-20} more</span>}
     </div>
   );
 }
@@ -223,7 +223,7 @@ function ProgressDots({history}) {
 function ProgressIndicator({covered,total}) {
   return (
     <div style={{marginBottom:14}}>
-      <p style={{fontSize:12,color:"var(--color-text-secondary)",marginBottom:6}}>
+      <p style={{fontSize:"0.75em",color:"var(--color-text-secondary)",marginBottom:6}}>
         Building your answer: {covered} of {total} key concepts covered
       </p>
       <div style={{display:"flex",gap:4}}>
@@ -247,10 +247,10 @@ function FlashCards({data,onResult}) {
   }
   return (
     <div style={{textAlign:"center"}}>
-      <p style={{fontSize:13,color:"var(--color-text-secondary)",marginBottom:12}}>Card {idx+1} of {cards.length}</p>
+      <p style={{fontSize:"0.8125em",color:"var(--color-text-secondary)",marginBottom:12}}>Card {idx+1} of {cards.length}</p>
       <div onClick={()=>setFlipped(!flipped)} style={{cursor:"pointer",background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",borderRadius:12,padding:"2rem",minHeight:140,display:"flex",flexDirection:"column",alignItems:"center",justifyContent:"center",marginBottom:16}}>
-        <p style={{fontSize:12,color:"var(--color-text-tertiary)",marginBottom:8}}>{flipped?"ANSWER — tap to flip back":"QUESTION — tap to flip"}</p>
-        <p style={{fontSize:16,fontWeight:flipped?400:500,lineHeight:1.6}}>{flipped?cards[idx]?.a:cards[idx]?.q}</p>
+        <p style={{fontSize:"0.75em",color:"var(--color-text-tertiary)",marginBottom:8}}>{flipped?"ANSWER — tap to flip back":"QUESTION — tap to flip"}</p>
+        <p style={{fontSize:"1em",fontWeight:flipped?400:500,lineHeight:1.6}}>{flipped?cards[idx]?.a:cards[idx]?.q}</p>
       </div>
       {!flipped&&(
         <div style={{display:"flex",gap:8,justifyContent:"center"}}>
@@ -261,10 +261,10 @@ function FlashCards({data,onResult}) {
       )}
       {flipped&&!answered&&(
         <div>
-          <p style={{fontSize:13,color:"var(--color-text-secondary)",marginBottom:10}}>How did you do?</p>
+          <p style={{fontSize:"0.8125em",color:"var(--color-text-secondary)",marginBottom:10}}>How did you do?</p>
           <div style={{display:"flex",gap:8,justifyContent:"center"}}>
-            <button onClick={()=>respond(false)} style={{fontSize:13,padding:"8px 16px"}}>✗ Not yet</button>
-            <button onClick={()=>respond(true)} style={{fontSize:13,padding:"8px 16px",background:"#1D9E75",color:"#fff",border:"none",borderRadius:8}}>✓ Got it</button>
+            <button onClick={()=>respond(false)} style={{fontSize:"0.8125em",padding:"8px 16px"}}>✗ Not yet</button>
+            <button onClick={()=>respond(true)} style={{fontSize:"0.8125em",padding:"8px 16px",background:"#1D9E75",color:"#fff",border:"none",borderRadius:8}}>✓ Got it</button>
           </div>
         </div>
       )}
@@ -282,12 +282,12 @@ function MCQQuestion({q,onResult}) {
     if(checked&&isCorrect){bg="var(--color-background-success)";border="1.5px solid #1D9E75";}
     else if(checked&&isSel&&!isCorrect){bg="var(--color-background-danger)";border="1.5px solid #D85A30";}
     else if(!checked&&isSel){bg="var(--color-background-info)";border="1.5px solid #378ADD";}
-    return {padding:"10px 14px",borderRadius:8,border,background:bg,cursor:checked?"default":"pointer",fontSize:14,lineHeight:1.5,userSelect:"none",marginBottom:8};
+    return {padding:"10px 14px",borderRadius:8,border,background:bg,cursor:checked?"default":"pointer",fontSize:"0.875em",lineHeight:1.5,userSelect:"none",marginBottom:8};
   }
   return (
     <div>
-      {q.setup&&<div style={{background:"var(--color-background-secondary)",borderRadius:10,padding:14,marginBottom:14,fontSize:14,lineHeight:1.7}}>{q.setup}</div>}
-      <p style={{fontWeight:500,fontSize:15,lineHeight:1.6,marginBottom:14}}>{q.question}</p>
+      {q.setup&&<div style={{background:"var(--color-background-secondary)",borderRadius:10,padding:14,marginBottom:14,fontSize:"0.875em",lineHeight:1.7}}>{q.setup}</div>}
+      <p style={{fontWeight:500,fontSize:"0.9375em",lineHeight:1.6,marginBottom:14}}>{q.question}</p>
       <div style={{marginBottom:16}}>
         {(q.options||[]).map((opt,i)=>{
           const letter=opt[0];
@@ -298,10 +298,10 @@ function MCQQuestion({q,onResult}) {
         <button onClick={()=>setChecked(true)} disabled={!selected}>Check answer</button>
       ):(
         <>
-          <div style={{padding:"10px 14px",borderRadius:8,marginBottom:12,fontSize:14,lineHeight:1.6,background:selected===correct?"var(--color-background-success)":"var(--color-background-danger)"}}>
+          <div style={{padding:"10px 14px",borderRadius:8,marginBottom:12,fontSize:"0.875em",lineHeight:1.6,background:selected===correct?"var(--color-background-success)":"var(--color-background-danger)"}}>
             {selected===correct?"✓ Correct — well done!":"✗ Not quite — review the explanation below."}
           </div>
-          <div style={{background:"var(--color-background-secondary)",borderRadius:8,padding:12,fontSize:14,lineHeight:1.6,marginBottom:12}}>
+          <div style={{background:"var(--color-background-secondary)",borderRadius:8,padding:12,fontSize:"0.875em",lineHeight:1.6,marginBottom:12}}>
             <strong>Explanation: </strong>{q.explanation}
           </div>
           <button onClick={()=>onResult(selected===correct,selected,selected===correct?"correct":"partial")}>Next question →</button>
@@ -414,15 +414,15 @@ Return ONLY one of: {"evaluation":"not_genuine"} or {"evaluation":"wrong"} or {"
 
   return (
     <div>
-      <p style={{fontWeight:500,fontSize:16,lineHeight:1.6,marginBottom:16}}>{q.question}</p>
+      <p style={{fontWeight:500,fontSize:"1em",lineHeight:1.6,marginBottom:16}}>{q.question}</p>
       <textarea value={answer} onChange={e=>setAnswer(e.target.value)} disabled={stage!=="writing"}
         placeholder="Type your answer here before submitting..."
-        style={{width:"100%",minHeight:100,padding:"10px 12px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:14,lineHeight:1.6,fontFamily:"inherit",resize:"vertical",marginBottom:12,color:"var(--color-text-primary)"}}/>
+        style={{width:"100%",minHeight:100,padding:"10px 12px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:"0.875em",lineHeight:1.6,fontFamily:"inherit",resize:"vertical",marginBottom:12,color:"var(--color-text-primary)"}}/>
       {stage==="writing"&&(
         <>
           {error==="score"&&<RetryError onRetry={scoreAnswer}/>}
           <button onClick={scoreAnswer} disabled={answer.trim().length<10}
-            style={{padding:"10px 20px",fontSize:14,fontWeight:500,borderRadius:8,background:answer.trim().length>=10?"#1D9E75":"var(--color-background-secondary)",color:answer.trim().length>=10?"#fff":"var(--color-text-secondary)",border:"none",cursor:answer.trim().length>=10?"pointer":"default"}}>
+            style={{padding:"10px 20px",fontSize:"0.875em",fontWeight:500,borderRadius:8,background:answer.trim().length>=10?"#1D9E75":"var(--color-background-secondary)",color:answer.trim().length>=10?"#fff":"var(--color-text-secondary)",border:"none",cursor:answer.trim().length>=10?"pointer":"default"}}>
             {answer.trim().length<10?`Keep writing... (${answer.trim().length}/10 min)`:"Submit answer →"}
           </button>
         </>
@@ -433,8 +433,8 @@ Return ONLY one of: {"evaluation":"not_genuine"} or {"evaluation":"wrong"} or {"
       {stage==="hint_checking"&&<Spinner msg="Checking your attempt..."/>}
       {status&&stage!=="scoring"&&stage!=="generating"&&(
         <div style={{borderRadius:10,padding:14,marginBottom:14,border:`1.5px solid ${statusColor}`,background:`${statusColor}18`}}>
-          <span style={{fontWeight:500,fontSize:14,color:statusColor,display:"block",marginBottom:4}}>{statusLabel}</span>
-          <span style={{fontSize:13,color:"var(--color-text-primary)",lineHeight:1.6}}>{statusMsg}</span>
+          <span style={{fontWeight:500,fontSize:"0.875em",color:statusColor,display:"block",marginBottom:4}}>{statusLabel}</span>
+          <span style={{fontSize:"0.8125em",color:"var(--color-text-primary)",lineHeight:1.6}}>{statusMsg}</span>
         </div>
       )}
       {totalConcepts>0&&stage!=="complete"&&stage!=="writing"&&stage!=="scoring"&&(
@@ -442,17 +442,17 @@ Return ONLY one of: {"evaluation":"not_genuine"} or {"evaluation":"wrong"} or {"
       )}
       {(stage==="followup"||stage==="followup_scoring"||stage==="hint_checking"||stage==="hint_blocked"||stage==="hint_ready")&&followUpQ&&(
         <div style={{border:"0.5px solid var(--color-border-secondary)",borderRadius:10,padding:14,marginBottom:14}}>
-          <p style={{fontSize:12,fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6,textTransform:"uppercase",letterSpacing:"0.08em"}}>
+          <p style={{fontSize:"0.75em",fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6,textTransform:"uppercase",letterSpacing:"0.08em"}}>
             Follow-up question {attemptCount+1} of 6
           </p>
-          <p style={{fontSize:15,fontWeight:500,lineHeight:1.6,marginBottom:12}}>{followUpQ.question}</p>
+          <p style={{fontSize:"0.9375em",fontWeight:500,lineHeight:1.6,marginBottom:12}}>{followUpQ.question}</p>
           {followUpFeedback&&(
-            <div style={{padding:"8px 12px",borderRadius:8,marginBottom:10,fontSize:13,lineHeight:1.6,background:followUpCorrect?"var(--color-background-success)":"var(--color-background-danger)"}}>
+            <div style={{padding:"8px 12px",borderRadius:8,marginBottom:10,fontSize:"0.8125em",lineHeight:1.6,background:followUpCorrect?"var(--color-background-success)":"var(--color-background-danger)"}}>
               {followUpCorrect?"✓ ":"✗ "}{followUpFeedback}
             </div>
           )}
           {stage==="hint_blocked"&&(
-            <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:13,lineHeight:1.6,marginBottom:10}}>
+            <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:"0.8125em",lineHeight:1.6,marginBottom:10}}>
               You haven't given this one a try yet. Take a minute, think it through, and write down whatever comes to mind — we can work from there.
             </div>
           )}
@@ -462,21 +462,21 @@ Return ONLY one of: {"evaluation":"not_genuine"} or {"evaluation":"wrong"} or {"
               <textarea value={followUpAnswer} onChange={e=>setFollowUpAnswer(e.target.value)}
                 disabled={stage==="followup_scoring"||stage==="hint_checking"||followUpFeedback!==null}
                 placeholder="Your answer..."
-                style={{width:"100%",minHeight:70,padding:"8px 10px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:14,lineHeight:1.5,fontFamily:"inherit",resize:"vertical",marginBottom:10,color:"var(--color-text-primary)"}}/>
+                style={{width:"100%",minHeight:70,padding:"8px 10px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:"0.875em",lineHeight:1.5,fontFamily:"inherit",resize:"vertical",marginBottom:10,color:"var(--color-text-primary)"}}/>
               <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:hintShown?12:0}}>
-                <button onClick={scoreFollowUp} disabled={followUpAnswer.trim().length<3||stage==="followup_scoring"||stage==="hint_checking"||followUpFeedback!==null} style={{fontSize:13,padding:"7px 14px"}}>Submit →</button>
-                {!hintShown&&<button onClick={evaluateHintRequest} disabled={stage==="followup_scoring"||stage==="hint_checking"} style={{fontSize:13,padding:"7px 14px"}}>I need a hint</button>}
-                <button onClick={()=>setStage("complete")} style={{fontSize:13,padding:"7px 14px"}}>Move on →</button>
+                <button onClick={scoreFollowUp} disabled={followUpAnswer.trim().length<3||stage==="followup_scoring"||stage==="hint_checking"||followUpFeedback!==null} style={{fontSize:"0.8125em",padding:"7px 14px"}}>Submit →</button>
+                {!hintShown&&<button onClick={evaluateHintRequest} disabled={stage==="followup_scoring"||stage==="hint_checking"} style={{fontSize:"0.8125em",padding:"7px 14px"}}>I need a hint</button>}
+                <button onClick={()=>setStage("complete")} style={{fontSize:"0.8125em",padding:"7px 14px"}}>Move on →</button>
               </div>
               {hintShown&&(
-                <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:13,fontStyle:"italic",color:"var(--color-text-secondary)",lineHeight:1.6,marginTop:4}}>
+                <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:"0.8125em",fontStyle:"italic",color:"var(--color-text-secondary)",lineHeight:1.6,marginTop:4}}>
                   💡 {hint}
                 </div>
               )}
             </>
           )}
           {followUpCorrect&&stage!=="complete"&&stage!=="generating"&&(
-            <p style={{fontSize:13,color:"#1D9E75",fontStyle:"italic"}}>Moving to the next concept...</p>
+            <p style={{fontSize:"0.8125em",color:"#1D9E75",fontStyle:"italic"}}>Moving to the next concept...</p>
           )}
         </div>
       )}
@@ -484,11 +484,11 @@ Return ONLY one of: {"evaluation":"not_genuine"} or {"evaluation":"wrong"} or {"
       {stage==="complete"&&(
         <>
           <div style={{background:"var(--color-background-secondary)",borderRadius:10,padding:14,marginBottom:14}}>
-            <p style={{fontSize:13,fontWeight:500,color:"var(--color-text-secondary)",marginBottom:8}}>
+            <p style={{fontSize:"0.8125em",fontWeight:500,color:"var(--color-text-secondary)",marginBottom:8}}>
               {status==="complete"?"🎉 Here's the complete picture:":"Here's what a complete answer looks like:"}
             </p>
             <ul style={{margin:0,paddingLeft:20}}>
-              {(q.keyPoints||[]).map((p,i)=><li key={i} style={{fontSize:14,marginBottom:6,lineHeight:1.6}}>{p}</li>)}
+              {(q.keyPoints||[]).map((p,i)=><li key={i} style={{fontSize:"0.875em",marginBottom:6,lineHeight:1.6}}>{p}</li>)}
             </ul>
           </div>
           <button onClick={()=>onResult(status==="complete"||attemptCount>0,answer,status||"partial")}>Next question →</button>
@@ -571,16 +571,16 @@ Student answer: "${followUpAnswer}"`,100
 
   return (
     <div>
-      <div style={{background:"var(--color-background-secondary)",borderRadius:10,padding:14,marginBottom:14,fontSize:14,lineHeight:1.7}}>{q.presentation}</div>
-      <p style={{fontWeight:500,fontSize:15,lineHeight:1.6,marginBottom:14}}>{q.task}</p>
+      <div style={{background:"var(--color-background-secondary)",borderRadius:10,padding:14,marginBottom:14,fontSize:"0.875em",lineHeight:1.7}}>{q.presentation}</div>
+      <p style={{fontWeight:500,fontSize:"0.9375em",lineHeight:1.6,marginBottom:14}}>{q.task}</p>
       <textarea value={answer} onChange={e=>setAnswer(e.target.value)} disabled={stage!=="writing"}
         placeholder="Work through your reasoning here before submitting..."
-        style={{width:"100%",minHeight:120,padding:"10px 12px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:14,lineHeight:1.6,fontFamily:"inherit",resize:"vertical",marginBottom:12,color:"var(--color-text-primary)"}}/>
+        style={{width:"100%",minHeight:120,padding:"10px 12px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:"0.875em",lineHeight:1.6,fontFamily:"inherit",resize:"vertical",marginBottom:12,color:"var(--color-text-primary)"}}/>
       {stage==="writing"&&(
         <>
           {error==="score"&&<RetryError onRetry={scoreAnswer}/>}
           <button onClick={scoreAnswer} disabled={answer.trim().length<10}
-            style={{padding:"10px 20px",fontSize:14,fontWeight:500,borderRadius:8,background:answer.trim().length>=10?"#1D9E75":"var(--color-background-secondary)",color:answer.trim().length>=10?"#fff":"var(--color-text-secondary)",border:"none",cursor:answer.trim().length>=10?"pointer":"default"}}>
+            style={{padding:"10px 20px",fontSize:"0.875em",fontWeight:500,borderRadius:8,background:answer.trim().length>=10?"#1D9E75":"var(--color-background-secondary)",color:answer.trim().length>=10?"#fff":"var(--color-text-secondary)",border:"none",cursor:answer.trim().length>=10?"pointer":"default"}}>
             {answer.trim().length<10?`Keep writing... (${answer.trim().length}/10 min)`:"Submit analysis →"}
           </button>
         </>
@@ -590,16 +590,16 @@ Student answer: "${followUpAnswer}"`,100
       {stage==="followup_scoring"&&<Spinner msg="Checking your answer..."/>}
       {status&&stage!=="scoring"&&stage!=="generating"&&(
         <div style={{borderRadius:10,padding:14,marginBottom:14,border:`1.5px solid ${statusColor}`,background:`${statusColor}18`}}>
-          <span style={{fontWeight:500,fontSize:14,color:statusColor,display:"block",marginBottom:4}}>{statusLabel}</span>
-          <span style={{fontSize:13,color:"var(--color-text-primary)",lineHeight:1.6}}>{statusMsg}</span>
+          <span style={{fontWeight:500,fontSize:"0.875em",color:statusColor,display:"block",marginBottom:4}}>{statusLabel}</span>
+          <span style={{fontSize:"0.8125em",color:"var(--color-text-primary)",lineHeight:1.6}}>{statusMsg}</span>
         </div>
       )}
       {(stage==="followup"||stage==="followup_scoring")&&followUpQ&&(
         <div style={{border:"0.5px solid var(--color-border-secondary)",borderRadius:10,padding:14,marginBottom:14}}>
-          <p style={{fontSize:12,fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6,textTransform:"uppercase",letterSpacing:"0.08em"}}>Follow-up question {attemptCount+1} of 6</p>
-          <p style={{fontSize:15,fontWeight:500,lineHeight:1.6,marginBottom:12}}>{followUpQ.question}</p>
+          <p style={{fontSize:"0.75em",fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6,textTransform:"uppercase",letterSpacing:"0.08em"}}>Follow-up question {attemptCount+1} of 6</p>
+          <p style={{fontSize:"0.9375em",fontWeight:500,lineHeight:1.6,marginBottom:12}}>{followUpQ.question}</p>
           {followUpFeedback&&(
-            <div style={{padding:"8px 12px",borderRadius:8,marginBottom:10,fontSize:13,lineHeight:1.6,background:followUpCorrect?"var(--color-background-success)":"var(--color-background-danger)"}}>
+            <div style={{padding:"8px 12px",borderRadius:8,marginBottom:10,fontSize:"0.8125em",lineHeight:1.6,background:followUpCorrect?"var(--color-background-success)":"var(--color-background-danger)"}}>
               {followUpCorrect?"✓ ":"✗ "}{followUpFeedback}
             </div>
           )}
@@ -609,14 +609,14 @@ Student answer: "${followUpAnswer}"`,100
               <textarea value={followUpAnswer} onChange={e=>setFollowUpAnswer(e.target.value)}
                 disabled={stage==="followup_scoring"||followUpFeedback!==null}
                 placeholder="Your answer..."
-                style={{width:"100%",minHeight:70,padding:"8px 10px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:14,lineHeight:1.5,fontFamily:"inherit",resize:"vertical",marginBottom:10,color:"var(--color-text-primary)"}}/>
+                style={{width:"100%",minHeight:70,padding:"8px 10px",borderRadius:8,border:"0.5px solid var(--color-border-secondary)",background:"var(--color-background-secondary)",fontSize:"0.875em",lineHeight:1.5,fontFamily:"inherit",resize:"vertical",marginBottom:10,color:"var(--color-text-primary)"}}/>
               <div style={{display:"flex",gap:8,flexWrap:"wrap",marginBottom:hintShown?12:0}}>
-                <button onClick={scoreFollowUp} disabled={followUpAnswer.trim().length<3||stage==="followup_scoring"||followUpFeedback!==null} style={{fontSize:13,padding:"7px 14px"}}>Submit →</button>
-                {!hintShown&&<button onClick={()=>setHintShown(true)} style={{fontSize:13,padding:"7px 14px"}}>I need a hint</button>}
-                <button onClick={()=>setStage("complete")} style={{fontSize:13,padding:"7px 14px"}}>Move on →</button>
+                <button onClick={scoreFollowUp} disabled={followUpAnswer.trim().length<3||stage==="followup_scoring"||followUpFeedback!==null} style={{fontSize:"0.8125em",padding:"7px 14px"}}>Submit →</button>
+                {!hintShown&&<button onClick={()=>setHintShown(true)} style={{fontSize:"0.8125em",padding:"7px 14px"}}>I need a hint</button>}
+                <button onClick={()=>setStage("complete")} style={{fontSize:"0.8125em",padding:"7px 14px"}}>Move on →</button>
               </div>
               {hintShown&&(
-                <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:13,fontStyle:"italic",color:"var(--color-text-secondary)",lineHeight:1.6,marginTop:4}}>
+                <div style={{padding:"10px 12px",borderRadius:8,background:"var(--color-background-secondary)",border:"0.5px solid var(--color-border-secondary)",fontSize:"0.8125em",fontStyle:"italic",color:"var(--color-text-secondary)",lineHeight:1.6,marginTop:4}}>
                   💡 {hint}
                 </div>
               )}
@@ -628,14 +628,14 @@ Student answer: "${followUpAnswer}"`,100
       {stage==="complete"&&(
         <>
           <div style={{borderRadius:10,padding:14,marginBottom:14,border:"0.5px solid var(--color-border-secondary)"}}>
-            <p style={{fontSize:13,fontWeight:500,color:"var(--color-text-secondary)",marginBottom:8}}>
+            <p style={{fontSize:"0.8125em",fontWeight:500,color:"var(--color-text-secondary)",marginBottom:8}}>
               {status==="complete"?"🎉 Excellent — here's the complete picture:":"Here's what a complete answer looks like:"}
             </p>
             <ul style={{margin:"0 0 12px",paddingLeft:20}}>
-              {(q.keyMechanisms||[]).map((m,i)=><li key={i} style={{fontSize:14,marginBottom:6,lineHeight:1.6}}>{m}</li>)}
+              {(q.keyMechanisms||[]).map((m,i)=><li key={i} style={{fontSize:"0.875em",marginBottom:6,lineHeight:1.6}}>{m}</li>)}
             </ul>
-            <p style={{fontSize:13,fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6}}>Clinical rationale:</p>
-            <p style={{fontSize:14,lineHeight:1.6,margin:0}}>{q.clinicalRationale}</p>
+            <p style={{fontSize:"0.8125em",fontWeight:500,color:"var(--color-text-secondary)",marginBottom:6}}>Clinical rationale:</p>
+            <p style={{fontSize:"0.875em",lineHeight:1.6,margin:0}}>{q.clinicalRationale}</p>
           </div>
           <button onClick={()=>onResult(status==="complete",answer,status||"partial")}>Next question →</button>
         </>
@@ -891,11 +891,10 @@ if(!system){
         <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
         <FontSizeControl sizeIdx={fontSizeIdx} setSizeIdx={setFontSizeIdx}/>
         <div style={{padding:"2rem 1rem"}}>
-        <h2 style={{fontSize:18,fontWeight:500,marginBottom:4}}>Physiology Learning Suite</h2>
- 
-        <p style={{color:"var(--color-text-secondary)",marginBottom:24,fontSize:14}}>Adaptive questions across all 6 levels of Bloom's Taxonomy. Select a body system to begin.</p>
+        <h2 style={{fontSize:"1.125em",fontWeight:500,marginBottom:4}}>Physiology Learning Suite</h2>
+        <p style={{color:"var(--color-text-secondary)",marginBottom:24,fontSize:"0.875em"}}>Adaptive questions across all 6 levels of Bloom's Taxonomy. Select a body system to begin.</p>
         <div style={{display:"grid",gridTemplateColumns:"repeat(auto-fit,minmax(160px,1fr))",gap:10}}>
-          {SYSTEMS.map(s=><button key={s} onClick={()=>selectSystem(s)} style={{padding:"1rem",borderRadius:10,textAlign:"center",fontWeight:500,fontSize:14,minHeight:64,cursor:"pointer"}}>{s}</button>)}
+          {SYSTEMS.map(s=><button key={s} onClick={()=>selectSystem(s)} style={{padding:"1rem",borderRadius:10,textAlign:"center",fontWeight:500,fontSize:"0.875em",minHeight:64,cursor:"pointer"}}>{s}</button>)}
         </div>
         </div>
       </div>
@@ -908,17 +907,17 @@ if(!system){
       <FontSizeControl sizeIdx={fontSizeIdx} setSizeIdx={setFontSizeIdx}/>
       <div style={{padding:"1.5rem 1rem"}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
-        <button onClick={()=>{setSystem(null);setCurrentQ(null);}} style={{fontSize:13,padding:"4px 10px"}}>← Systems</button>
-        <span style={{fontWeight:500,fontSize:16}}>{system}</span>
+        <button onClick={()=>{setSystem(null);setCurrentQ(null);}} style={{fontSize:"0.8125em",padding:"4px 10px"}}>← Systems</button>
+        <span style={{fontWeight:500,fontSize:"1em"}}>{system}</span>
       </div>
 
       <div style={{display:"flex",gap:6,marginBottom:16}}>
         {TUTORIALS[system]&&(
-          <button onClick={()=>setTab("learn")} style={{padding:"6px 16px",borderRadius:20,fontSize:13,fontWeight:tab==="learn"?500:400,background:tab==="learn"?"#2C2C2A":"var(--color-background-secondary)",color:tab==="learn"?"#fff":"var(--color-text-primary)",border:tab==="learn"?"none":"0.5px solid var(--color-border-secondary)",cursor:"pointer"}}>
+          <button onClick={()=>setTab("learn")} style={{padding:"6px 16px",borderRadius:20,fontSize:"0.8125em",fontWeight:tab==="learn"?500:400,background:tab==="learn"?"#2C2C2A":"var(--color-background-secondary)",color:tab==="learn"?"#fff":"var(--color-text-primary)",border:tab==="learn"?"none":"0.5px solid var(--color-border-secondary)",cursor:"pointer"}}>
             📖 Learn
           </button>
         )}
-        <button onClick={()=>{setTab("practice");if(!currentQ){const lvl=LEVELS.find(l=>l.id===levelId);selectLevel(lvl);}}} style={{padding:"6px 16px",borderRadius:20,fontSize:13,fontWeight:tab==="practice"?500:400,background:tab==="practice"?"#2C2C2A":"var(--color-background-secondary)",color:tab==="practice"?"#fff":"var(--color-text-primary)",border:tab==="practice"?"none":"0.5px solid var(--color-border-secondary)",cursor:"pointer"}}>
+        <button onClick={()=>{setTab("practice");if(!currentQ){const lvl=LEVELS.find(l=>l.id===levelId);selectLevel(lvl);}}} style={{padding:"6px 16px",borderRadius:20,fontSize:"0.8125em",fontWeight:tab==="practice"?500:400,background:tab==="practice"?"#2C2C2A":"var(--color-background-secondary)",color:tab==="practice"?"#fff":"var(--color-text-primary)",border:tab==="practice"?"none":"0.5px solid var(--color-border-secondary)",cursor:"pointer"}}>
           🧠 Practice
         </button>
       </div>
@@ -940,7 +939,7 @@ if(!system){
               const active=l.id===levelId;
               return (
                 <button key={l.id} onClick={()=>selectLevel(l)}
-                  style={{padding:"6px 12px",fontSize:13,borderRadius:20,background:active?l.color:"var(--color-background-secondary)",color:active?"#fff":"var(--color-text-primary)",border:active?"none":"0.5px solid var(--color-border-secondary)",fontWeight:active?500:400,cursor:"pointer"}}>
+                  style={{padding:"6px 12px",fontSize:"0.8125em",borderRadius:20,background:active?l.color:"var(--color-background-secondary)",color:active?"#fff":"var(--color-text-primary)",border:active?"none":"0.5px solid var(--color-border-secondary)",fontWeight:active?500:400,cursor:"pointer"}}>
                   {l.label}{h.length>0&&!active?` (${h.length})`:""}</button>
               );
             })}
@@ -949,11 +948,11 @@ if(!system){
           <div style={{marginBottom:16}}>
             <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:4}}>
               <span style={{display:"inline-block",width:10,height:10,borderRadius:"50%",background:level.color}}/>
-              <span style={{fontWeight:500,fontSize:15}}>{level.label}</span>
+              <span style={{fontWeight:500,fontSize:"0.9375em"}}>{level.label}</span>
             </div>
-            <p style={{fontSize:13,color:"var(--color-text-secondary)",marginBottom:10}}>{level.desc}</p>
+            <p style={{fontSize:"0.8125em",color:"var(--color-text-secondary)",marginBottom:10}}>{level.desc}</p>
             {hist.length>0&&(
-              <div style={{display:"flex",gap:16,fontSize:13,color:"var(--color-text-secondary)",marginBottom:8}}>
+              <div style={{display:"flex",gap:16,fontSize:"0.8125em",color:"var(--color-text-secondary)",marginBottom:8}}>
                 <span style={{color:"#1D9E75"}}>✓ {correct} correct</span>
                 <span style={{color:"#D85A30"}}>✗ {wrong} needs work</span>
                 <span>{hist.length} attempted</span>
@@ -964,15 +963,15 @@ if(!system){
 
           {levelNudge&&(
             <div style={{border:"1.5px solid #EF9F27",borderRadius:12,padding:16,marginBottom:16,background:"#EF9F2718"}}>
-              <p style={{fontWeight:500,fontSize:14,color:"#EF9F27",marginBottom:8}}>A quick note before you move up</p>
-              <p style={{fontSize:14,lineHeight:1.6,color:"var(--color-text-primary)",marginBottom:12}}>
+              <p style={{fontWeight:500,fontSize:"0.875em",color:"#EF9F27",marginBottom:8}}>A quick note before you move up</p>
+              <p style={{fontSize:"0.875em",lineHeight:1.6,color:"var(--color-text-primary)",marginBottom:12}}>
                 You've answered Remembering questions correctly {levelNudge.accuracy}% of the time. Building a stronger foundation — closer to 90% — will make the higher levels feel more manageable. That said, the choice is yours.
               </p>
               <div style={{display:"flex",gap:8,flexWrap:"wrap"}}>
-                <button onClick={()=>{setLevelNudge(null);const hist=getHistory(system,levelNudge.targetLevel.id);fetchQuestion(system,levelNudge.targetLevel,hist);}} style={{fontSize:13,padding:"7px 14px"}}>
+                <button onClick={()=>{setLevelNudge(null);const hist=getHistory(system,levelNudge.targetLevel.id);fetchQuestion(system,levelNudge.targetLevel,hist);}} style={{fontSize:"0.8125em",padding:"7px 14px"}}>
                   I understand — move up anyway
                 </button>
-                <button onClick={()=>{setLevelNudge(null);setLevelId("remember");fetchQuestion(system,LEVELS[0],getHistory(system,"remember"));}} style={{fontSize:13,padding:"7px 14px",background:"#1D9E75",color:"#fff",border:"none",borderRadius:8}}>
+                <button onClick={()=>{setLevelNudge(null);setLevelId("remember");fetchQuestion(system,LEVELS[0],getHistory(system,"remember"));}} style={{fontSize:"0.8125em",padding:"7px 14px",background:"#1D9E75",color:"#fff",border:"none",borderRadius:8}}>
                   Keep building at Remembering
                 </button>
               </div>
@@ -983,17 +982,17 @@ if(!system){
             {loading&&<Spinner msg="Generating question..."/>}
             {error&&(
               <div>
-                <p style={{color:"var(--color-text-danger)",fontSize:14,marginBottom:8}}>{error}</p>
+                <p style={{color:"var(--color-text-danger)",fontSize:"0.875em",marginBottom:8}}>{error}</p>
                 <button onClick={()=>fetchQuestion(system,level,hist)}>Try again</button>
               </div>
             )}
             {!loading&&!error&&currentQ&&(
               <div>
                 <div style={{display:"flex",alignItems:"center",gap:6,marginBottom:14}}>
-                  <span style={{fontSize:12,padding:"3px 10px",borderRadius:20,background:"var(--color-background-secondary)",color:"var(--color-text-secondary)",border:"0.5px solid var(--color-border-tertiary)"}}>
+                  <span style={{fontSize:"0.75em",padding:"3px 10px",borderRadius:20,background:"var(--color-background-secondary)",color:"var(--color-text-secondary)",border:"0.5px solid var(--color-border-tertiary)"}}>
                     {currentQ.concept||level.label}
                   </span>
-                  <span style={{fontSize:12,color:"var(--color-text-tertiary)"}}>Question {hist.length+1}</span>
+                  <span style={{fontSize:"0.75em",color:"var(--color-text-tertiary)"}}>Question {hist.length+1}</span>
                 </div>
                 {currentQ.type==="mcq"&&<MCQQuestion q={currentQ} onResult={handleResult}/>}
                 {currentQ.type==="explain"&&<ExplainQuestion q={currentQ} onResult={handleResult}/>}
@@ -1005,7 +1004,7 @@ if(!system){
 
           {!loading&&currentQ&&(
             <div style={{marginTop:12}}>
-              <button onClick={()=>fetchQuestion(system,level,hist)} style={{fontSize:13,padding:"5px 12px"}}>
+              <button onClick={()=>fetchQuestion(system,level,hist)} style={{fontSize:"0.8125em",padding:"5px 12px"}}>
                 Skip → next question
               </button>
             </div>
