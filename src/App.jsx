@@ -76,11 +76,6 @@ For explain: {"type":"explain","concept":"name","question":"question","keyPoints
 For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"B","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
 For case: {"type":"case","concept":"name","presentation":"scenario","task":"task","keyMechanisms":["m1","m2","m3"],"clinicalRationale":"reasoning","reachingQuestion":"simpler","advancingQuestion":"harder"}`;
 }
-Generate ONE question. Return ONLY valid JSON:
-For explain: {"type":"explain","concept":"name","question":"question","keyPoints":["point 1","point 2","point 3"],"reachingQuestion":"simpler follow-up","advancingQuestion":"harder follow-up"}
-For mcq: {"type":"mcq","concept":"name","setup":"scenario","question":"question","options":["A. ...","B. ...","C. ...","D. ..."],"correct":"B","explanation":"1-2 sentences confirming correct answer","reachingQuestion":"simpler","advancingQuestion":"harder"}
-For case: {"type":"case","concept":"name","presentation":"scenario","task":"task","keyMechanisms":["m1","m2","m3"],"clinicalRationale":"reasoning","reachingQuestion":"simpler","advancingQuestion":"harder"}`;
-}
 
 async function apiCall(prompt, maxTokens=200) {
   const res = await fetch("/api/chat",{
