@@ -781,7 +781,7 @@ export default function App() {
       const raw=data.content?.map(b=>b.text||"").join("")||"";
       const clean=raw.replace(/```json|```/g,"").trim();
       const parsed=JSON.parse(clean);
-      setCurrentQ(parsed);
+      setCurrentQ(parsed.type === "mcq" ? shuffleMCQ(parsed) : parsed);
     } catch(e){setError("Could not generate question. Please try again.");}
     setLoading(false);
   }
