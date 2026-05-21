@@ -887,8 +887,10 @@ if(!system){
   }
 
   return (
-    <div style={{padding:"1.5rem 1rem"}}>
+    <div>
       <style>{`@keyframes spin{to{transform:rotate(360deg)}}`}</style>
+      <FontSizeControl sizeIdx={fontSizeIdx} setSizeIdx={setFontSizeIdx}/>
+      <div style={{padding:"1.5rem 1rem"}}>
       <div style={{display:"flex",alignItems:"center",gap:8,marginBottom:16}}>
         <button onClick={()=>{setSystem(null);setCurrentQ(null);}} style={{fontSize:13,padding:"4px 10px"}}>← Systems</button>
         <span style={{fontWeight:500,fontSize:16}}>{system}</span>
