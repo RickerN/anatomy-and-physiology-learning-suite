@@ -54,7 +54,7 @@ This is a working intervention, not a concept. Every design decision was driven 
 
 ## About
 
-Built by a community college professor with 13 years in higher education, currently serving as a Presidential Strategic Planning Fellow across a 12-campus system and completing a PhD in Community College Leadership.
+Built by a community college professor with 15 years in higher education, currently serving as a Presidential Strategic Planning Fellow across a 12-campus system and completing a PhD in Community College Leadership.
 
 The research question driving this work: does structured adaptive AI engagement produce measurable growth in the quality of student reasoning, and can that growth be distinguished from the surface-level fluency that AI so easily enables?
 
