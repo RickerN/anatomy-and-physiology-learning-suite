@@ -46,7 +46,7 @@ The system is discipline-agnostic by design. A&P is the starting point. Nursing,
 
 ## Where it stands
 
-The app is deployed and functional. A faculty usability review is scheduled for May 2026 with subject matter experts in a variety of disciplines, science and non-science alike. A student pilot is in development for Fall 2026. Dissertation research examining whether structured adaptive AI engagement produces measurable growth in student reasoning quality begins January 2028.
+The app is deployed and functional. A faculty usability review was completed in May 2026 with seven faculty participants who are subject matter experts in a variety of disciplines, science and non-science alike. A student pilot is in development for Fall 2026 deployment. Dissertation research examining whether structured adaptive AI engagement produces measurable growth in student reasoning quality begins January 2028.
 
 This is a working intervention, not a concept. Every design decision was driven by a pedagogical question, not a technical one.
 
